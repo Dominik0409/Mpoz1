@@ -10,6 +10,13 @@ def test_lokalny(v,a,atas,s,u_kryt):
         else:
             print(u,'-')
 
+def sigma0(v,atas):
+    sigma = m.sqrt((v.T.dot(v))/(12))
+    sigmax = np.zeros((12,1))
+    for i in range(12):
+        sigmax[i] = sigma * m.sqrt(abs(atas[i,i]))
+    return sigmax
+
 sigma0_ap = 0.08
 chi2= 21.026
 
@@ -92,3 +99,9 @@ print(sigma0_kryt)
 
 test_lokalny(V_1,a,c1[0:-1,0:-1],sigma0_ap,2.5)
 
+print(X_3)
+
+print(c1[0:-1,0:-1])
+
+sigmaV_3 = sigma0(V_3,c1[0:-1,0:-1])
+print(sigmaV_3)
